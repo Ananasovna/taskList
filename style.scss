@@ -1,0 +1,224 @@
+@import "nullstyle.scss";
+
+@font-face {
+  font-family: 'Inter';
+  src: local('Inter Regular'), local('Inter-Regular'),
+      url('./assets/fonts/inter-regular/Inter-Regular.woff2') format('woff2'),
+      url('./assets/fonts/inter-regular/Inter-Regular.woff') format('woff'),
+      url('./assets/fonts/inter-regular/Inter-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: local('Inter Bold'), local('Inter-Bold'),
+      url('./assets/fonts/inter-bold/Inter-Bold.woff2') format('woff2'),
+      url('./assets/fonts/inter-bold/Inter-Bold.woff') format('woff'),
+      url('./assets/fonts/inter-bold/Inter-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+$color-gray-3xl: #717171;
+$color-gray-xxl: #A9A9A9;
+$color-gray-xl: #C4C4C4;
+$color-gray-l: #D1D0D0;
+$color-gray-m: #E5E5E5;
+$color-gray-s: #DDDDDD;
+$color-gray-xs: #ECECEC;
+$color-white: #FFFFFF;
+
+$fs-18: 18px;
+$fs-16: 16px;
+$fs-10: 10px;
+
+%flex-block {
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: $fs-18;
+  background-color: $color-gray-m;
+}
+
+.wrapper {
+  width: 759px;
+  height: 456px;
+  margin: 50px auto;
+}
+
+.header {
+  @extend %flex-block;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 13px 9px 16px;
+  background-color: $color-gray-l;
+
+  .search-bar {
+    @extend %flex-block;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    width: 184px;
+    height: 43px;
+    padding: 8px;
+    background-color: $color-gray-xxl;
+
+    &__icon {
+      width: 26px;
+      height: 26px;
+    }
+
+    &__input {
+      width: 130px;
+      font-size: 18px;
+      background-color: $color-gray-xxl;
+    }
+
+    input::-moz-placeholder { 
+      color: $color-gray-s; 
+    }
+    input::-webkit-input-placeholder { 
+      color: $color-gray-s; 
+    }
+  }
+}
+
+.section-wrapper {
+  @extend %flex-block;
+  flex-direction: row;
+
+  .time-settings {
+    @extend %flex-block;
+    gap: 14px;
+    width: 208px;
+    height: 397px;
+    padding: 18px 19px 18px 16px;
+    background-color: $color-white;
+
+    &__button {
+      width: 173px;
+      height: 34px;
+      text-align: center;
+      font-size: $fs-18;
+      background-color: $color-gray-xl;
+    }
+
+    .calendar {
+      background-color: $color-gray-s;
+    }
+
+    .calendar input {
+      font-size: $fs-16;
+      margin: 5px 10px 5px 10px;;
+      background: $color-gray-s;
+    }
+
+    .checkbox-wrapper {
+      @extend %flex-block;
+      flex-direction: row;
+      align-items: center;
+      gap: 3px;
+    }
+
+    &__checkbox {
+      width: 12px;
+      height: 12px;
+    }
+
+    &__label {
+      font-size: $fs-10;
+      line-height: 12px;
+      letter-spacing: 0.02em;
+    }
+
+  }
+
+  .task-list {
+    @extend %flex-block;
+    gap: 13px;
+    width: 551px;
+    padding: 9px 13px 9px 26px;
+    background-color: $color-gray-xs;
+
+    .settings-wrapper {
+      @extend %flex-block;
+      flex-direction: row;
+      justify-content: space-between;
+      font-size: $fs-10;
+    }
+
+    .sorting-wrapper {
+      @extend %flex-block;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &__icon {
+      width: 11px;
+      height: 8px;
+    }
+
+    .task {
+      @extend %flex-block;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 5px 9px 2px 8px;
+      background-color: $color-gray-l;
+
+      &__name {
+        font-weight: 700;
+      }
+
+      .task-wrapper {
+        @extend %flex-block;
+        gap: 7px;
+      }
+
+      &__description {
+        font-size: $fs-16;
+      }
+
+      &__checkbox {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+      }
+
+
+      &__checkbox + label {
+        display: inline-flex;
+        align-items: center;
+        user-select: none;
+        align-self: flex-end;
+      }
+
+      &__checkbox + label:before {
+        content: '';
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        border: 3px solid $color-gray-3xl;
+        border-radius: 0.25em;
+        margin: 17px 0 6px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 17.86px 14.21px;
+        cursor: pointer;
+      }
+
+      &__checkbox:checked + label:before {
+        background-image: url("./assets/icons/checked.svg");
+      }
+
+      &__datetime {
+        font-size: $fs-10;
+      }
+    }
+  }
+}
+
